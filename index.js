@@ -1,13 +1,9 @@
 const express = require('express');
 
+const routerUsers = require('./router/users');
+
 const app = express();
 
-app.get('/', (req, res, next) => {
-    res.send('Deu certo!');
-});
-
-app.get('/fran', (req, res, next) => {
-    res.send('Francielle!');
-});
+app.use(routerUsers);
 
 app.listen(3000);
