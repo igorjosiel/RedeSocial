@@ -1,9 +1,9 @@
-const User = require('../util/database');
+const User = require('../model/users');
 
 const getUsers = (req, res, next) => {
-    const user = User.findAll();
-
-    console.log('User: ', user);
+    User.findAll()
+        .then(users => users.map(user => user.dataValues))
+        .then(users => console.log('Users: ', users));
 
     res.send('<h1>Usuários:</h1>');
 }
