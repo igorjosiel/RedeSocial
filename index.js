@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const User = require('./model/users');
 
 const routerUsers = require('./router/users');
+const routerAuth = require('./router/auth');
 
 const sequelize = require('./util/database');
 
@@ -19,7 +20,9 @@ app.set('views', 'views');
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(urlencodedParser);
+app.use(express.static(__dirname + '/public'));
 
 app.use(routerUsers);
+app.use(routerAuth);
 
 app.listen(3000);

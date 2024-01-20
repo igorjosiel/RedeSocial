@@ -1,0 +1,27 @@
+    <%- include('partials/header.ejs', { titlePage: 'Login' }) %>
+</head>
+<body class="login-page">
+    <main>
+        <div class="card">
+            <!-- <h5 class="card-header w-25">Login</h5> -->
+
+            <div class="card-body">
+                <form class="row g-3">
+                    <div class="col-auto w-100">
+                        <label for="email" class="form-label">Email</label>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+                    </div>
+                    <div class="col-auto w-100">
+                        <label for="password" class="form-label">Senha</label>
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+                    </div>
+                    <div class="col-auto w-100">
+                        <button type="submit" class="btn btn-primary mb-2">Entrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>

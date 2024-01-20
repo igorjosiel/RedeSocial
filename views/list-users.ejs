@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuários</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <%- include('partials/header.ejs', { titlePage: 'Usuários' }) %>
 </head>
 <body>
+  <%- include('partials/navbar.ejs') %>
+
+  <main>
     <h3>Usuários</h3>
 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -14,66 +11,65 @@
     </button>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Novo Usuário</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="row g-3" role="form" action="/user" method="post">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Novo Usuário</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form class="row g-3" role="form" action="/user" method="post">
+                  <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Nome">
+                      <label for="name">Nome</label>
+                    </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Nome">
-                        <label for="name">Nome</label>
-                      </div>
-                      <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Apelido">
-                        <label for="nickname">Apelido</label>
-                      </div>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
-                        <label for="email">Email</label>
-                      </div>
-                      <div class="form-floating">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
-                        <label for="password">Senha</label>
-                      </div>
+                      <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Apelido">
+                      <label for="nickname">Apelido</label>
+                    </div>
+                  <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                      <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
+                      <label for="password">Senha</label>
+                    </div>
 
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Criar</button>
-                      </div>
-                </form>
-            </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-primary">Criar</button>
+                    </div>
+              </form>
           </div>
         </div>
       </div>
+    </div>
 
     <% if (users.length <= 0) { %>
-        <h5>Nenhum usuário cadastrado!</h5>
-    <% } else { %>
-        <table class="table table-striped">
-            <thead>
-                <tr class="table-dark">
-                    <th scope="col">Name</th>
-                    <th scope="col">Nickname</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% users.forEach(user => { %>
-                    <tr>
-                        <td><%= user.name %></td>
-                        <td><%= user.nickname %></td>
-                        <td><%= user.email %></td>
-                        <td>Teste</td>
-                    </tr>
-                <% }) %>
-            </tbody>
-          </table>
-    <% } %>
+      <h5>Nenhum usuário cadastrado!</h5>
+  <% } else { %>
+      <table class="table table-striped">
+          <thead>
+              <tr class="table-dark">
+                  <th scope="col">Name</th>
+                  <th scope="col">Nickname</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% users.forEach(user => { %>
+                  <tr>
+                      <td><%= user.name %></td>
+                      <td><%= user.nickname %></td>
+                      <td><%= user.email %></td>
+                      <td>Teste</td>
+                  </tr>
+              <% }) %>
+          </tbody>
+        </table>
+  <% } %>
+  </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-</html>
+  <%- include('partials/ending.ejs') %>

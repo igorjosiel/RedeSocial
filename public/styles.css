@@ -1,0 +1,26 @@
+main {
+    padding: 50px;
+}
+
+.login-page {
+    background-color: #0d6efd;
+}
+
+.login-page .card {
+    margin: auto;
+}
+
+.login-page .card {
+    max-width: 400px !important;
+}
+
+.login-page label {
+    color: var(--bs-primary-border-subtle);
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.form-label,
+.form-control {
+    font-size: 0.9rem;
+}
