@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var session = require('express-session');
 
 const User = require('./model/users');
 
@@ -13,6 +14,8 @@ sequelize.sync();
 // User.create({ name: 'francielle', nickname: 'fran', email: 'testfrane@gmail.com', password: '0911' });
 
 const app = express();
+
+// app.use(session({}));
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');

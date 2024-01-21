@@ -9,14 +9,32 @@ const getUsers = (req, res, next) => {
 }
 
 const createUser = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10)
-        .then(encryptedPassword => {
-            const name = req.body.name;
-            const nickname = req.body.nickname;
-            const email = req.body.email;
-            const password = encryptedPassword;
+    const name = req.body.name;
+    const nickname = req.body.nickname;
+    const email = req.body.email;
+    const password = req.body.password;
 
-            User.create({ name, nickname, email, password });
+    User.findOne({ where: { email: email } })
+        .then((userFound) => {
+            if (userFound) {
+                return res.redirect('/login');
+            }
+
+            console.log('Name: ', name, nickname, email, password);
+
+            bcrypt.hash(password, 10)
+                .then(encryptedPassword => {
+                    const user = new User({
+                        name,
+                        nickname,
+                        email,
+                        password: encryptedPassword,
+                    });
+
+                    return user.save();
+                }).then(() => {
+                    return res.redirect('/users');
+                });
         });
 }
 
