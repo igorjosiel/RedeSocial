@@ -6,6 +6,6 @@ router = express.Router();
 
 router.get('/login', authController.renderLoginPage);
 router.post('/login', authController.postLogin);
-router.post('/logout', authController.getLogout);
+router.get('/logout', authController.getLogout);
 
 module.exports = router;

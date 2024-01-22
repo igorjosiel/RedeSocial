@@ -33,7 +33,7 @@ const postLogin = (req, res, next) => {
 const getLogout = (req, res, next) => {
     req.session.destroy();
 
-    return res.render('/login');
+    return res.redirect('/login');
 };
 
 module.exports = {
