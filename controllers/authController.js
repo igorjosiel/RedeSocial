@@ -15,7 +15,12 @@ const postLogin = (req, res, next) => {
 
             bcrypt.compare(password, user.password)
                 .then((doMatch) => {
-                    if (doMatch) return res.redirect('/users');
+                    if (doMatch) {
+                        req.session.user = email;
+                        req.session.save();
+
+                        return res.redirect('/users');
+                    }
 
                     res.redirect('/login');
                 })
@@ -25,7 +30,14 @@ const postLogin = (req, res, next) => {
         })
 }
 
+const getLogout = (req, res, next) => {
+    req.session.destroy();
+
+    return res.render('/login');
+};
+
 module.exports = {
     renderLoginPage,
     postLogin,
+    getLogout,
 }

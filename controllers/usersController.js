@@ -20,8 +20,6 @@ const createUser = (req, res, next) => {
                 return res.redirect('/login');
             }
 
-            console.log('Name: ', name, nickname, email, password);
-
             bcrypt.hash(password, 10)
                 .then(encryptedPassword => {
                     const user = new User({
